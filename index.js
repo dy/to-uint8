@@ -5,7 +5,7 @@
 var toab = require('to-array-buffer')
 var isFloat = require('is-float-array')
 var clamp = require('clamp')
-var flat = require('flatten-vertex-data')
+var flat = require('arr-flatten')
 var isBase64 = require('is-base64')
 
 module.exports = function tou8 (src, detectFloat) {
