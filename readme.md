@@ -1,4 +1,4 @@
-# to-uint8 [![unstable](https://img.shields.io/badge/stability-unstable-green.svg)](http://github.com/badges/stability-badges)
+# to-uint8 [![unstable](https://img.shields.io/badge/stability-unstable-green.svg)](http://github.com/badges/stability-badges) [![Build Status](https://travis-ci.org/dy/to-uint8.svg?branch=master)](https://travis-ci.org/dy/to-uint8)
 
 Convert input array to uint8 array, detecting floats if required. Useful to ensure that an input array contains pixels/colors.
 
