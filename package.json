@@ -27,8 +27,8 @@
   "dependencies": {
     "arr-flatten": "^1.1.0",
     "clamp": "^1.0.1",
+    "is-base64": "^0.1.0",
     "is-float-array": "^1.0.0",
-    "to-array-buffer": "^3.0.0",
-    "to-base64": "^1.0.1"
+    "to-array-buffer": "^3.0.0"
   }
 }
