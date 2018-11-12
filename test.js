@@ -23,3 +23,9 @@ a.deepEqual(u8([[[0,0,0,0], [1,1,1,1]]]), [0,0,0,0, 255,255,255,255])
 
 a.equal(u8(null), null)
 a.equal(u8(/abc/), null)
+
+var uint8 = new Uint8Array([1, 2, 3])
+var uint8clamped = new Uint8ClampedArray(uint8.buffer)
+
+a.equal(u8(uint8), uint8)
+a.deepEqual(u8(uint8clamped), uint8)
