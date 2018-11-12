@@ -5,12 +5,23 @@
 var toab = require('to-array-buffer')
 var isFloat = require('is-float-array')
 var clamp = require('clamp')
+var flat = require('flatten-vertex-data')
 
 module.exports = function tou8 (src, detectFloat) {
   if (detectFloat == null) detectFloat = true
 
+  // if at least one component is an array - flatten data
+  if (Array.isArray(src)) {
+    for (var i = 0; i < src.length; i++) {
+      if (src[i].length != null) {
+        src = flat(src)
+        break
+      }
+    }
+  }
+
   // convert float to int
-	if (isFloat(src)) {
+  if (isFloat(src)) {
 	  if (detectFloat) {
 	    // if at least one pixel is more than 1, then does not convert input array
       for (var i = 0; i < src.length; i++) {
