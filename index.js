@@ -6,8 +6,11 @@ var toab = require('to-array-buffer')
 var isFloat = require('is-float-array')
 var clamp = require('clamp')
 var flat = require('flatten-vertex-data')
+var isBase64 = require('is-base64')
 
 module.exports = function tou8 (src, detectFloat) {
+  if (!src) return null
+
   if (detectFloat == null) detectFloat = true
 
   // if at least one component is an array - flatten data
@@ -41,9 +44,11 @@ module.exports = function tou8 (src, detectFloat) {
 
   // array-ish
   if (src.length != null && typeof src !== 'string') {
-  	return new Uint8Array(src)
+    return new Uint8Array(src)
   }
 
   // non-array
-  return new Uint8Array(toab(src))
+  var buf = toab(src)
+  if (!buf) return null
+  return new Uint8Array(buf)
 }

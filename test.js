@@ -19,3 +19,6 @@ a.deepEqual(u8([0, 1, 255], false), [0, 255, 255])
 a.deepEqual(u8({data: [0, 1, 2]}), [0, 1, 2])
 
 a.deepEqual(u8([[0,0,0,0], [1,1,1,1]]), [0,0,0,0, 255,255,255,255])
+
+a.equal(u8(null), null)
+a.equal(u8(/abc/), null)

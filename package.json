@@ -28,6 +28,6 @@
     "clamp": "^1.0.1",
     "flatten-vertex-data": "^1.0.2",
     "is-float-array": "^1.0.0",
-    "to-array-buffer": "^2.2.2"
+    "to-array-buffer": "^3.0.0"
   }
 }

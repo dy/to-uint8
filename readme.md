@@ -12,7 +12,7 @@ var pixels = u8([[0,0,0,1], [1,1,1,1]]) // <uint8 0,0,0,255, 255,255,255,255>
 
 ## `u8data = u8(data, detectFloat=true)`
 
-Return Uint8Array `u8data` with input `data` values, possibly converted from floats, if required. `data` can be an array, array of arrays, typed array, buffer, arraybuffer, base64 string or any other container.
+Return Uint8Array `u8data` with input `data` values, possibly converted from floats, if required. `data` can be an Array, Array of Arrays, TypedArray, Buffer, ArrayBuffer, base64 string or any other container.
 
 ```js
 u8(new Uint16Array([0, 1, 2])) // <uint8 0, 1, 2>
@@ -26,6 +26,9 @@ u8([0, 1, 255]) // <uint8 0, 1, 255>
 
 // unless passed a flag to force conversion
 u8([0, 1, 255], false) // <uint8 0, 255, 255>
+
+// bad data returns null
+u8(/abc/) // null
 ```
 
 ## See also
