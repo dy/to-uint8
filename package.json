@@ -1,6 +1,6 @@
 {
   "name": "to-uint8",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Convert data to Uint8Array",
   "main": "index.js",
   "scripts": {
