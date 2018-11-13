@@ -2,6 +2,7 @@
 
 var a = require('assert')
 var u8 = require('./')
+// var NDArray = require('ndarray')
 
 a.deepEqual(u8([0,0,0,1, 1,1,1,1]), [0,0,0,255, 255,255,255,255])
 
@@ -29,3 +30,7 @@ var uint8clamped = new Uint8ClampedArray(uint8.buffer)
 
 a.equal(u8(uint8), uint8)
 a.deepEqual(u8(uint8clamped), uint8)
+
+
+// detect nested uints
+a.deepEqual(u8({data: [0, 1, 1]}), [0, 255, 255])

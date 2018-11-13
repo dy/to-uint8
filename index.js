@@ -11,6 +11,8 @@ var isBase64 = require('is-base64')
 module.exports = function tou8 (src, detectFloat) {
   if (!src) return null
 
+  if (src.data) src = src.data
+
   // shortcut uint8s
   if (src instanceof Uint8Array) return src
   if (src instanceof Uint8ClampedArray) return new Uint8Array(src.buffer)
