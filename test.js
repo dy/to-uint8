@@ -31,6 +31,9 @@ var uint8clamped = new Uint8ClampedArray(uint8.buffer)
 a.equal(u8(uint8), uint8)
 a.deepEqual(u8(uint8clamped), uint8)
 
-
 // detect nested uints
 a.deepEqual(u8({data: [0, 1, 1]}), [0, 255, 255])
+
+// handle NaNs
+a.deepEqual(u8([[null, undefined], [NaN, -0], [/abc/, Infinity, -Infinity]]), [0, 0, 0, 0, 0, 255, 0])
+a.deepEqual(u8([null, undefined, NaN, -0, /abc/, Infinity, -Infinity]), [0, 0, 0, 0, 0, 255, 0])

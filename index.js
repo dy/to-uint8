@@ -22,7 +22,7 @@ module.exports = function tou8 (src, detectFloat) {
   // if at least one component is an array - flatten data
   if (Array.isArray(src)) {
     for (var i = 0; i < src.length; i++) {
-      if (src[i].length != null) {
+      if (src[i] && src[i].length != null) {
         src = flat(src)
         break
       }
@@ -35,26 +35,34 @@ module.exports = function tou8 (src, detectFloat) {
 	    // if at least one pixel is more than 1, then does not convert input array
       for (var i = 0; i < src.length; i++) {
         if (src[i] > 1 || src[i] < 0) {
-          return new Uint8Array(src)
+          return uninfinite(new Uint8Array(src), src)
         }
       }
     }
 
     var pixels = new Uint8Array(src.length)
     for (var i = 0; i < src.length; i++) {
-      pixels[i] = clamp(src[i] * 255, 0, 255)
+      pixels[i] = clamp(src[i], 0, 1) * 255
     }
 
-    return pixels
+    return uninfinite(pixels, src)
 	}
 
   // array-ish
   if (src.length != null && typeof src !== 'string') {
-    return new Uint8Array(src)
+    return uninfinite(new Uint8Array(src), src)
   }
 
   // non-array
   var buf = toab(src)
   if (!buf) return null
-  return new Uint8Array(buf)
+  return uninfinite(new Uint8Array(buf), src)
+}
+
+// disclose infinities
+function uninfinite(u, src) {
+  for (var i = 0; i < src.length; i++) {
+    if (src[i] === Infinity) u[i] = 255
+  }
+  return u
 }
